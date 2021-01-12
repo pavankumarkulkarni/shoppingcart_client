@@ -10,12 +10,12 @@ export default function GoogleSignin() {
     const uemail = profile.getEmail();
 
     let user, userdata;
-    user = await fetch(`/api/users/${uemail}`);
+    user = await fetch(`${process.env.REACT_APP_API}/api/users/${uemail}`);
     if (user.status === 200) {
       userdata = await user.json();
       alert(`Welcome back ${uname}`);
     } else {
-      user = await fetch(`/api/users`, {
+      user = await fetch(`${process.env.REACT_APP_API}/api/users`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,8 +52,8 @@ export default function GoogleSignin() {
           Login with Google
         </button>
       )}
-      clientId='55500008962-naome7c4ht95kve4c525vistnllf1195.apps.googleusercontent.com'
-      buttonText='Login'
+      clientId="55500008962-naome7c4ht95kve4c525vistnllf1195.apps.googleusercontent.com"
+      buttonText="Login"
       onSuccess={onSuccess}
       // onFailure={responseGoogle}
       cookiePolicy={"single_host_origin"}
