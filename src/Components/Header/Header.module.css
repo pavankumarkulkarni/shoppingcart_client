@@ -1,0 +1,87 @@
+.header {
+    width: 100%;
+    padding: 1rem;
+    grid-area: header;
+    background-color: rgba(10, 10, 10, 0.8);
+    color: #efefef;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4rem;
+}
+
+.headerBtn,
+.loginBtn {
+    padding: none;
+    background-color: transparent;
+    border: 0.1rem solid #efefef;
+    color: #efefef;
+    font-size: 1rem;
+    outline: none;
+    position: relative;
+    transition: all 0.2s;
+}
+
+.loginBtn {
+    border: none;
+    margin-right: 1rem;
+}
+
+.headerBtn:hover,
+.loginBtn:hover {
+    color: #ffbb00;
+    border: 0.1rem solid #ffbb00;
+}
+
+.loginBtn:hover {
+    border: none;
+}
+
+.icons {
+    display: flex;
+    align-items: center;
+}
+
+.cartarea {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    cursor: pointer;
+    justify-content: center;
+    position: relative;
+    transition: all 0.5s;
+}
+
+.cartarea:hover {
+    color: #ffbb00;
+}
+
+.cartTotal {
+    display: grid;
+    place-items: center;
+    height: 1rem;
+    width: 1rem;
+    border: 0.1rem solid #efefef;
+    border-radius: 50%;
+    font-size: 0.7rem;
+    background-color: #ffbb00;
+    position: absolute;
+    color: black;
+    font-weight: bold;
+    right: -0.4rem;
+    top: -0.4rem;
+    transition: all 0.2s;
+}
+
+.cartarea:hover .cartTotal {
+    background-color: rgba(10, 10, 10, 0.8);
+    color: white;
+    font-weight: bold;
+}
+
+.aboutus {
+    margin-left: 1rem;
+}

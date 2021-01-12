@@ -1,0 +1,41 @@
+.dropdownmenu {
+    position: absolute;
+    /* display: none; */
+    height: 0;
+    overflow: hidden;
+    background-color: rgba(10, 10, 10, 0.8);
+    /* padding: 1rem; */
+    /* line-height: 1.2rem; */
+    /* right: 0.5rem; */
+    /* min-width: 15rem; */
+    /* overflow: scroll; */
+    transition: all 0.2s;
+    z-index: 999;
+}
+
+.menu:hover .dropdownmenu {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    max-height: 80vh;
+    overflow: auto;
+    padding: 1rem;
+    line-height: 1.2rem;
+    right: 0.5rem;
+    min-width: 15rem;
+    overflow: auto;
+    box-shadow: 2px 2px 2px #ffbb00;
+    border-radius: 5px;
+}
+
+.dropdownmenu button {
+    background-color: transparent;
+    color: #efefef;
+    border: none;
+    outline: none;
+    display: block;
+}
+
+.dropdownmenu button:hover {
+    color: #ffbb00;
+}

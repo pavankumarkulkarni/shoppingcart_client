@@ -1,0 +1,49 @@
+/* Customer Details form */
+
+.customerdetails {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.customerdetails p {
+    font-weight: bold;
+}
+
+.customerdetails h3 {
+    margin: 0 auto;
+}
+
+.customerdetails label {
+    margin-top: 1rem;
+    font-size: 1rem;
+}
+
+.customerdetails p.labelhint {
+    font-size: 0.8rem;
+    color: gray;
+    padding-left: 2rem;
+}
+
+.customerdetails input,
+.customerdetails select {
+    padding: 0.5rem 1rem;
+    font-family: 'Montserrat', sans-serif, Helvetica, Arial, sans-serif;
+    border: 0.1px solid black;
+    border-radius: 5px;
+}
+
+.customerdetails button {
+    margin-top: 1rem;
+}
+
+.select {
+    margin-top: 1rem;
+}
+
+.flexDisplay {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
