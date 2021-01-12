@@ -11,7 +11,7 @@ export default function Address({
 }) {
   const uspsValidator = (e) => {
     e.preventDefault();
-    fetch("/api/address/", {
+    fetch(`${process.env.REACT_APP_API}/api/address/`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -35,21 +35,24 @@ export default function Address({
     address.usps === "pass" ? (
       <button
         className={`iconButton ${style.tooltip} ${style.tooltipTop}`}
-        data-tooltiptext='Verified via United states postal.'>
-        <i className='fas fa-check'></i>
+        data-tooltiptext="Verified via United states postal."
+      >
+        <i className="fas fa-check"></i>
       </button>
     ) : address.usps === "fail" ? (
       <button
         className={`iconButton ${style.tooltip} ${style.tooltipTop}`}
-        data-tooltiptext='Address not found in USPS database. Edit and reverify'>
-        <i className='fas fa-exclamation'></i>
+        data-tooltiptext="Address not found in USPS database. Edit and reverify"
+      >
+        <i className="fas fa-exclamation"></i>
       </button>
     ) : null
   ) : (
     <button
       className={`${style.checkBtn} ${style.tooltip} ${style.tooltipTop}`}
-      data-tooltiptext='Check the accuracy of address via USPS'
-      onClick={(e) => uspsValidator(e)}>
+      data-tooltiptext="Check the accuracy of address via USPS"
+      onClick={(e) => uspsValidator(e)}
+    >
       {" "}
       via USPS
     </button>
@@ -64,35 +67,38 @@ export default function Address({
       <div className={style.icons}>
         <button
           className={`iconButton ${style.tooltip} ${style.tooltipRight}`}
-          data-tooltiptext='Click to edit the address.'
+          data-tooltiptext="Click to edit the address."
           onClick={(e) => {
             editAddress(address);
-          }}>
+          }}
+        >
           <i>
-            <i className='fas fa-edit'></i>
+            <i className="fas fa-edit"></i>
           </i>
         </button>
 
         <button
           className={`iconButton ${style.tooltip} ${style.tooltipTop}`}
-          data-tooltiptext='Click to save as favorite address.'
+          data-tooltiptext="Click to save as favorite address."
           onClick={(e) => {
             setFavAddress(address._id);
-          }}>
+          }}
+        >
           {address.fav === "true" ? (
-            <i className='fas fa-heart'></i>
+            <i className="fas fa-heart"></i>
           ) : (
-            <i className='far fa-heart'></i>
+            <i className="far fa-heart"></i>
           )}
         </button>
 
         <button
           className={`iconButton ${style.tooltip} ${style.tooltipLeft}`}
-          data-tooltiptext='Click to delete the address.'
+          data-tooltiptext="Click to delete the address."
           onClick={(e) => {
             delAddress(address._id);
-          }}>
-          <i className='fas fa-trash-alt'></i>
+          }}
+        >
+          <i className="fas fa-trash-alt"></i>
         </button>
       </div>
       <div className={style.usps}>

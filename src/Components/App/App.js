@@ -33,7 +33,7 @@ class App extends Component {
 
   getOrders = async () => {
     try {
-      let o = await fetch("/api/orders");
+      let o = await fetch(`${process.env.REACT_APP_API}/api/orders`);
       let d = await o.json();
       return d;
     } catch (err) {
@@ -43,7 +43,7 @@ class App extends Component {
   };
   getData = async () => {
     try {
-      let res = await fetch("/api/products");
+      let res = await fetch(`${process.env.REACT_APP_API}/api/products`);
       let data = await res.json();
       return data;
     } catch (error) {
@@ -61,12 +61,15 @@ class App extends Component {
       authxtoken = "";
     }
     try {
-      const user = await fetch("/api/users/userByToken", {
-        method: "POST",
-        headers: {
-          authxtoken: authxtoken,
-        },
-      });
+      const user = await fetch(
+        `${process.env.REACT_APP_API}/api/users/userByToken`,
+        {
+          method: "POST",
+          headers: {
+            authxtoken: authxtoken,
+          },
+        }
+      );
       if (user.ok) {
         const userData = await user.json();
         setLoggedInUser({ userData });
@@ -175,7 +178,7 @@ class App extends Component {
       cartItems: this.state.cartItems,
     };
 
-    const res = await fetch("/api/orders", {
+    const res = await fetch(`${process.env.REACT_APP_API}/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -209,7 +212,7 @@ class App extends Component {
 
   // fetch orderlist
   getOrderList = async () => {
-    const orderListRes = await fetch("/api/orders");
+    const orderListRes = await fetch(`${process.env.REACT_APP_API}/api/orders`);
     const orderList = await orderListRes.json();
     return orderList;
   };
@@ -223,7 +226,7 @@ class App extends Component {
   };
 
   deleteOrder = async (id) => {
-    fetch(`/api/orders/${id}`, { method: "DELETE" })
+    fetch(`${process.env.REACT_APP_API}/api/orders/${id}`, { method: "DELETE" })
       .then((res) => res.json())
       .then((data) => {
         alert(`${id} Order deleted!`);
@@ -277,7 +280,8 @@ class App extends Component {
           value={{
             loggedInUser: this.state.loggedInUser,
             setLoggedInUser: this.setLoggedInUser,
-          }}>
+          }}
+        >
           <div className={style.gridlayout}>
             <Header
               openAdminModal={this.openAdminModal}
@@ -312,7 +316,7 @@ class App extends Component {
             <div className={style.main}>
               <div className={style.maincontent}>
                 <Switch>
-                  <Route path='/' exact>
+                  <Route path="/" exact>
                     <div className={style.filterbar}>
                       <Filterbar
                         count={this.state.products.length}
@@ -329,16 +333,16 @@ class App extends Component {
                       />
                     </div>
                   </Route>
-                  <Route path='/profile'>
+                  <Route path="/profile">
                     <Profile
                       updateAddress={this.updateAddress}
                       updateCard={this.updateCard}
                     />
                   </Route>
-                  <Route path='/aboutus'>
+                  <Route path="/aboutus">
                     <AboutUs />
                   </Route>
-                  <Route path='/checkout'>
+                  <Route path="/checkout">
                     <CheckOut sendCustDetails={this.sendCustDetails} />
                   </Route>
                 </Switch>
