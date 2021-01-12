@@ -20,29 +20,30 @@ class Auth extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { setLoggedInUser } = this.context;
-    // this.props.closeModal();
-    // this.props.setLogin(true);
     if (this.state.signUp) {
-      const res = await fetch("/api/users/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: this.state.email,
-          password: this.state.password,
-          passwordcheck: this.state.repassword,
-          displayName: this.state.displayName,
-          type: "register",
-        }),
-      });
+      const res = await fetch(
+        `${process.env.REACT_APP_API}/api/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: this.state.email,
+            password: this.state.password,
+            passwordcheck: this.state.repassword,
+            displayName: this.state.displayName,
+            type: "register",
+          }),
+        }
+      );
       const data = await res.json();
       alert(data.msg);
       if (res.status === 200) {
         this.props.closeModal();
       }
     } else {
-      const res = await fetch("/api/users/signin", {
+      const res = await fetch(`${process.env.REACT_APP_API}/api/users/signin`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,64 +122,66 @@ class Auth extends Component {
         <button
           className={style.signin}
           style={signIpPadding}
-          onClick={this.signIn}>
+          onClick={this.signIn}
+        >
           Sign In
         </button>
         <button
           style={signUpPadding}
           className={style.signup}
-          onClick={this.signUp}>
+          onClick={this.signUp}
+        >
           Sign Up
         </button>
         <form onSubmit={this.handleSubmit} className={style.authform}>
           {this.state.signUp ? (
             <>
-              <label htmlFor='displayName'>Display Name: </label>
+              <label htmlFor="displayName">Display Name: </label>
               <input
-                name='displayName'
+                name="displayName"
                 value={this.state.displayName}
                 onChange={this.handleChange}
                 required
               />
             </>
           ) : null}
-          <label htmlFor='email'>Email : </label>
+          <label htmlFor="email">Email : </label>
           <input
-            type='email'
-            name='email'
+            type="email"
+            name="email"
             value={this.state.email}
             onChange={this.handleChange}
             required
           />
-          <label htmlFor='password'>Password:</label>
+          <label htmlFor="password">Password:</label>
           <input
-            type='password'
-            name='password'
+            type="password"
+            name="password"
             value={this.state.password}
             onChange={this.handleChange}
             required
-            pattern='.{6,12}'
-            title='Password length 6-12 characters'
+            pattern=".{6,12}"
+            title="Password length 6-12 characters"
           />
 
           {this.state.signUp ? (
             <>
-              <label htmlFor='repassword'>Confirm password: </label>
+              <label htmlFor="repassword">Confirm password: </label>
               <input
-                type='password'
-                name='repassword'
+                type="password"
+                name="repassword"
                 value={this.state.repassword}
                 onChange={this.handleChange}
                 required
-                pattern='.{6,12}'
-                title='Password length 6-12 characters'
+                pattern=".{6,12}"
+                title="Password length 6-12 characters"
               />
-              <button type='submit' className={style.join}>
+              <button type="submit" className={style.join}>
                 Join
               </button>
             </>
           ) : (
-            <button type='submit' className={style.enter}>
+            <button type="submit" className={style.enter}>
               Enter
             </button>
           )}
