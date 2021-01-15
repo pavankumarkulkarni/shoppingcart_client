@@ -47,7 +47,10 @@ class Cart extends Component {
           return (
             <div className={style.cartcard} key={item._id}>
               <div>
-                <img src={item.image} alt={item.title} />
+                <img
+                  src={`data:image/png;base64,${item.img}`}
+                  alt={item.title}
+                />
               </div>
               <div>
                 <p>{item.title}</p>
@@ -56,7 +59,8 @@ class Cart extends Component {
                 </span>
                 <button
                   className={style.secondaryBtn}
-                  onClick={(e) => this.handleRemoveItems(item)}>
+                  onClick={(e) => this.handleRemoveItems(item)}
+                >
                   Remove
                 </button>
               </div>
@@ -67,7 +71,7 @@ class Cart extends Component {
           <div className={style.carttotal}>
             <span>Total : ${this.totalPrice().toFixed(2)} </span>
             <button>
-              <Link to='/checkout'>PROCEED</Link>
+              <Link to="/checkout">PROCEED</Link>
             </button>
           </div>
         ) : null}
