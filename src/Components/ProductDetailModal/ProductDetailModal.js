@@ -6,7 +6,7 @@ function ProductDetail({ product, closeModal, addToCart }) {
   return (
     <div className={style.productModal}>
       <div className={style.modalimage}>
-        <img src={product.image} alt={product.title} />
+        <img src={`data:image/png;base64,${product.img}`} alt={product.title} />
       </div>
       <div className={style.modaldesc}>
         <h3>{product.title}</h3>
